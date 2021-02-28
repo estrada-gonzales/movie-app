@@ -1,16 +1,18 @@
 "use strict"
 
 // const moviesPost = true;
-const movieList = 'https://foregoing-ballistic-cephalopod.glitch.me/movies'
+const movieList = 'https://foregoing-ballistic-cephalopod.glitch.me/movies';
 
 fetch(movieList)
 .then(response => console.log(response.json()))
     .then(movies => {
-        console.log(`<h1>${movies}</h1>`);
+        // console.log(`<h1>${movies[0]}</h1>`);
+        console.log(movies);
     })
-.catch(error => console.error(error))
+.catch(error => console.error(error));
 
 $.post(movieList);
+
 
 // $("button").click(function(){
 //     $.post("demo_test_post.asp",
