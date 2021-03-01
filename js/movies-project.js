@@ -1,42 +1,67 @@
 "use strict"
 
-// const moviesPost = true;
+// movieList is the API url from where we will be retrieving our data from
 const movieList = 'https://foregoing-ballistic-cephalopod.glitch.me/movies'
 
-fetch(movieList)
-.then(response => console.log(response.json()))
-    .then(movies => {
-        console.log(`<h1>${movies}</h1>`);
-    })
-.catch(error => console.error(error))
+// double click to start running function
+$(document).ready(() => {
+    $('#searchMoviesForm').dblclick(function (e) {
+        let searchText = ($('#searchText').val());
+        getMovies(searchText);
+        e.preventDefault();
+    });
+});
 
-$.post(movieList);
+// getMovies fetches the url, and created a promise that pulls the movie Objects from the array
+function getMovies() {
+    return fetch(movieList)
+        .then(response => response.json())
+        .then(movies => {
+            movies.forEach(movieObj => {
+                let id = "Movie id: " + movieObj.id;
+                console.log(id);
+                let title = "Movie title: " + movieObj.title;
+                console.log(title);
+                let rating = "Movie rating: " + movieObj.rating;
+                console.log(rating);
+            })
+        })
+    let html = "";
+    let movie = id + title + rating;
+    console.log(movie);
 
-// $("button").click(function(){
-//     $.post("demo_test_post.asp",
-//         {
-//             name: "Donald Duck",
-//             city: "Duckburg"
-//         },
-//         function(data, status){
-//             alert("Data: " + data + "\nStatus: " + status);
-//         });
-// });
+    html += movie;
+    $("#display").html(html);
+}
 
 
 
-// function showMovies() {
-//     let html = "";
-//     let movie =
+
+// html to display to page
+// function displayHTML() {
+//     fetch(movieList)
+//         .then(response => response.json())
+//         // .then(movies.forEach(movieObj => {
+//         //     let movie = movieObj;
 //
+//     let html = '';
+//     // for (let i = 0; i < 5; i++) {
+//     //     console.log(movieObj[i]);
+//         let movieHtml = "<div class='card' style='width: 18rem'>";
+//         movieHtml += "<div class='card-header'>" + "hello" + "</div>";
+//         movieHtml += "<ul class='list-group list-group-flush'>";
+//         movieHtml += "<li class='list-group-item text-center'>" + movie.title + "</li>";
+//         movieHtml += "<li class='list-group-item text-center'>" + "hello" + "</li>";
+//         movieHtml += "<li class='list-group-item text-center'>" + "hello" + "</li>";
+//         movieHtml += "</ul>";
+//         movieHtml += "</div>";
+//         html += movieHtml;
+//
+//     $("#display").html();
 // }
 
 
-
-
-
-
-
+// displayHTML();
 
 
 // To create this application, you need to
@@ -67,14 +92,3 @@ $.post(movieList);
 //     I'm a firm believer that complicated things can be accomplished if they are broken into easy tasks and we take a methodical approach to making sure each tiny piece works before moving on! :female_superhero::skin-tone-2:
 
 // :rotating_light: SAVE THIS. PUT IT SOMEWHERE AND CONSTANTLY LOOK BACK AT IT WHEN YOU GET STUCK
-
-
-console.log("test");
-//
-// $(document).ready(function () {
-//     return "test";
-// });
-
-$('h1').click(function() {
-    $(this).css('color', 'red');
-})
