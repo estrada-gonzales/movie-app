@@ -1,34 +1,56 @@
 "use strict"
 // movieList is the API url from where we will be retrieving our data from
 const movieList = 'https://foregoing-ballistic-cephalopod.glitch.me/movies'
-// double click to start running function
-$(document).ready(() => {
-    $('#searchMoviesForm').dblclick(function (e) {
-        let searchText = ($('#searchText').val());
-        getMovies(searchText);
-        e.preventDefault();
-    });
-});
+
 // getMovies fetches the url, and created a promise that pulls the movie Objects from the array
+getMovies();
+
 function getMovies() {
+    $("#display").html(" ");
     return fetch(movieList)
         .then(response => response.json())
         .then(movies => {
-            for (let i = 0; i < movies.length; i++) {
-                // console.log ( movies[i] );
-                let movie = movies[i];
-                console.log(movie.title);
-                let html = "";
-                let moviesHtml = '<div>'
-                moviesHtml += '<tr>Title<th>' + movie.title + ' </th></tr>';
-                moviesHtml += '<tr>ID: ' + movie.id + '</tr>';
-                moviesHtml += '<tr>Rating: ' + movie.rating + ' </tr>';
+            movies.forEach(movie => {
+                // console.log(movie);
+                let output = "";
+                let moviesHtml = '<div class ="card m-3 border-danger” style=“width: 18rem:">'
+                moviesHtml += "<div class=“card-header”>"
+                moviesHtml += '<ul class="list-group list-group-flush text-center">';
+                moviesHtml += '<li class="list-group-item">Title: ' + movie.title + '</li>';
+                moviesHtml += '<li class="list-group-item">Id: ' + movie.id + '</li>';
+                moviesHtml += '<li class="list-group-item">Rating: ' + movie.rating + '</li>';
+                moviesHtml += '</ul>'
                 moviesHtml += '</div>';
-                html += moviesHtml;
-                $("#display").html(html);
-            }
-
+                output += moviesHtml;
+                $("#display").append(output);
+            });
         });
-
-
 }
+
+
+function postMovie(movieObject) {
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(movieObject)
+    };
+    return fetch(movieList, options)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+                getMovies();
+        })
+        .catch(error => console.error(error));
+}
+
+
+$("#postAMovie").click(function (e) {
+    e.preventDefault();
+    postMovie({
+        "title": $("#movieTitle").val(),
+        "rating": $("#movieRating").val()
+        // id: $("#movieId").val()
+    })
+});
