@@ -19,7 +19,7 @@ function getMovies() {
                 moviesHtml += '<li class="list-group-item">Title: ' + movie.title + '</li>';
                 moviesHtml += '<li class="list-group-item">Id: ' + movie.id + '</li>';
                 moviesHtml += '<li class="list-group-item">Rating: ' + movie.rating + '</li>';
-                moviesHtml += '<button id="delete-button">Delete</button>
+                moviesHtml += '<button id="delete-button">Delete</button>';
                 moviesHtml += '</ul>'
                 moviesHtml += '</div>';
                 output += moviesHtml;
@@ -78,7 +78,7 @@ function editMovie(movieObject) {
 
 function deleteMovie(movieObject) {
     const options = {
-        method: 'DELETE',
+        method: 'DELETE/id',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -98,6 +98,7 @@ $("#delete-button").click(function (e) {
     deleteMovie({
         "title": $("#movieTitle").val(),
         "rating": $("#movieRating").val(),
-        id: $("#movieId").val()
+        "id": $("#movieId").val()
     })
 });
+
