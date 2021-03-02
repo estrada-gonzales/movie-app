@@ -19,6 +19,7 @@ function getMovies() {
                 moviesHtml += '<li class="list-group-item">Title: ' + movie.title + '</li>';
                 moviesHtml += '<li class="list-group-item">Id: ' + movie.id + '</li>';
                 moviesHtml += '<li class="list-group-item">Rating: ' + movie.rating + '</li>';
+                moviesHtml += '<button id="edit-button">Edit</button>';
                 moviesHtml += '<button id="delete-button">Delete</button>';
                 moviesHtml += '</ul>'
                 moviesHtml += '</div>';
@@ -75,10 +76,19 @@ function editMovie(movieObject) {
         .catch(error => console.error(error));
 }
 
+$("#edit-button").click(function (e) {
+    e.preventDefault();
+    editMovie({
+        "title": $("#movieTitle").val(),
+        "rating": $("#movieRating").val(),
+        "id": $("#movieId").val()
+    })
+});
+
 
 function deleteMovie(movieObject) {
     const options = {
-        method: 'DELETE/id',
+        method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
         },

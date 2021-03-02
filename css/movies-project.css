@@ -1,3 +1,18 @@
-* {
+body {
+    background-color: #979dac;
+}
 
+button {
+    background-color: #002855;
+    color: #7d8597;
+}
+
+form {
+    background-color: #0353a4;
+}
+
+.submit-container {
+    background-color: #7d8597;
+    color: #FFFFFF;
+    text-align: center;
 }
