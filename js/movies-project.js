@@ -19,6 +19,7 @@ function getMovies() {
                 moviesHtml += '<li class="list-group-item">Title: ' + movie.title + '</li>';
                 moviesHtml += '<li class="list-group-item">Id: ' + movie.id + '</li>';
                 moviesHtml += '<li class="list-group-item">Rating: ' + movie.rating + '</li>';
+                moviesHtml += '<button id="delete-button">Delete</button>';
                 moviesHtml += '</ul>'
                 moviesHtml += '</div>';
                 output += moviesHtml;
@@ -46,6 +47,8 @@ function postMovie(movieObject) {
 }
 
 
+
+
 $("#postAMovie").click(function (e) {
     e.preventDefault();
     postMovie({
@@ -54,3 +57,48 @@ $("#postAMovie").click(function (e) {
         // id: $("#movieId").val()
     })
 });
+
+function editMovie(movieObject) {
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(movieObject)
+    };
+    return fetch(movieList, options)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            getMovies();
+        })
+        .catch(error => console.error(error));
+}
+
+
+function deleteMovie(movieObject) {
+    const options = {
+        method: 'DELETE/id',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(movieObject)
+    };
+    return fetch(movieList, options)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            getMovies();
+        })
+        .catch(error => console.error(error));
+}
+
+$("#delete-button").click(function (e) {
+    e.preventDefault();
+    deleteMovie({
+        "title": $("#movieTitle").val(),
+        "rating": $("#movieRating").val(),
+        "id": $("#movieId").val()
+    })
+});
+
