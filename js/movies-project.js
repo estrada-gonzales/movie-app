@@ -23,6 +23,7 @@ function getMovies() {
                 moviesHtml += '<button class="delete" id="delete-button">Delete</button>';
                 moviesHtml += '</ul>';
                 moviesHtml += '</div>';
+                moviesHtml += '</div>'
                 output += moviesHtml;
                 $("#display").append(output);
             });
@@ -33,9 +34,8 @@ $(".testing").click(function() {
     $(this).css("color", "red");
 })
 
-
 $(".delete").click(function() {
-    $(this).css("color", "red");
+    $(this).parent('div').css("color", "red");
 });
 
 
