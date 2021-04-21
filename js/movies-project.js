@@ -19,7 +19,7 @@ function getMovies() {
                 moviesHtml += '<li class="list-group-item">Title: ' + movie.title + '</li>';
                 moviesHtml += '<li class="list-group-item" id="hideId">Id: ' + movie.id + '</li>';
                 moviesHtml += '<li class="list-group-item">Rating: ' + movie.rating + '</li>';
-                moviesHtml += '<button class="edit" id="edit-button">Edit</button>';
+                moviesHtml += '<button class="edit" id="edit-button" data-id=${movie.id}>Edit</button>';
                 moviesHtml += '<button class="delete" id="delete-button">Delete</button>';
                 moviesHtml += '</ul>';
                 moviesHtml += '</div>';
@@ -94,7 +94,7 @@ $("#edit-button").click(function (e) {
 
 
 function deleteMovie(id) {
-    fetch(`$movieUrl/${id}`), {
+    fetch(`movieUrl/${id}`), {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
