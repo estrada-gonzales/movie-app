@@ -31,7 +31,7 @@ function getMovies() {
 }
 
 $(".testing").click(function() {
-    $(this).css("color", "red");
+    $(this).css("color", "blue");
 })
 
 $(".delete").click(function() {
@@ -97,7 +97,8 @@ function deleteMovie(id) {
     fetch(`movieUrl/${id}`), {
         method: 'DELETE',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            body: JSON.stringify(movieObject)
         },
     }
         .then(response => response.json())
