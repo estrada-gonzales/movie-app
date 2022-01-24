@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/movies-project.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 </head>
 <body>
 
@@ -13,9 +14,24 @@
 <!--    <button class="testing">Test me</button>-->
 <!--</div>-->
 
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+<!--            <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">-->
+            <i class="fas fa-film"></i>
+            MovieFun
+        </a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Sign In</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 <div class="submit-container">
 <h2>Submit a Movie</h2>
-<form class="submit-movie-form">
+    <form class="submit-movie-form">
     <label for="movieTitle">Movie Title:</label><br>
     <input type="text" id="movieTitle" name="moviename" placeholder="Movie Title"><br>
 <!--    <label for="movieId">ID:</label><br>-->

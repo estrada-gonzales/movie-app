@@ -17,7 +17,7 @@ function getMovies() {
                 moviesHtml += "<div class=“card-header”>"
                 moviesHtml += '<ul class="list-group list-group-flush text-center">';
                 moviesHtml += '<li class="list-group-item">Title: ' + movie.title + '</li>';
-                moviesHtml += '<li class="list-group-item" id="hideId">Id: ' + movie.id + '</li>';
+                // moviesHtml += '<li class="list-group-item" id="hideId">Id: ' + movie.id + '</li>';
                 moviesHtml += '<li class="list-group-item">Rating: ' + movie.rating + '</li>';
                 moviesHtml += '<button class="edit" id="edit-button" data-id=${movie.id}>Edit</button>';
                 moviesHtml += '<button class="delete" id="delete-button">Delete</button>';
