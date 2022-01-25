@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<script>
+    // const db = ;
+
+    const settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://movie-database-imdb-alternative.p.rapidapi.com/?s=Avengers%20Endgame&r=json&page=1",
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
+            "x-rapidapi-key": "6666df7eb5msh94ef87ffb90e7f7p142cc3jsnfea4a626c29d"
+        }
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+</script>
+
+
+</body>
+</html>
